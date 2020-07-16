@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600&family=Titillium+Web&display=swap');
+/* font-family: 'Mukta', sans-serif;
+font-family: 'Titillium Web', sans-serif; */
+
+body{
+    font-family: 'Titillium Web', sans-serif !important;
+    font-size: 1rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.19);
+}
+nav{
+    color: white;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Mukta', sans-serif !important;
+}
