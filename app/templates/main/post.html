@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block title %}Blog | Profile{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="../../static/photos/{{post.image_url}}" alt="">
+        </div>
+        <div class="col">
+            <h4>{{post.title}}</h4>
+            <p>{{post.content}}</p>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock%}%  

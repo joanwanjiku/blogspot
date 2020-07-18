@@ -11,9 +11,12 @@ from .form import RegistrationForm, LoginForm
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(name=form.username.data, password=form.password.data)
-        db.session.add(user)
-        db.session.commit()
+        user = User(
+            name=form.username.data,
+            email=form.email.data,
+            password=form.password.data
+        )
+        user.add_user()
         return redirect(url_for('auth.login'))
         title = 'Sign up'
     return render_template('auth/register.html', signup_form= form)
@@ -28,7 +31,7 @@ def login():
             login_user(user,login_form.remember.data)
             flash('Logged in successfully.')
 
-            return redirect(request.args.get('next') or url_for('main.work_session'))
+            return redirect(request.args.get('next') or url_for('main.index'))
         flash('Invalid username or Password')
 
     title = "login"
