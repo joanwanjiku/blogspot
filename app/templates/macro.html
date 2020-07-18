@@ -1,0 +1,33 @@
+{% macro displayPost(post_list) %}
+    {% for post in post_list %}
+        <div class="card mt-1" style="width: auto;">
+            <img src="../static/{{post.image_url}}" class="card-img-top img-fluid blog-img" alt="...">
+            <div class="card-body">
+                <small>{{post.posted}} | {{post.users.name}} | {{post.image_url}}</small>
+                <h5 class="card-title text-center">{{post.title}}</h5>
+                <p>{{post.content}}</p>
+                <a href="{{url_for('main.each_post', id=post.id)}}">Details..</a><p class="card-text"></p>
+            </div>
+            <div class="card-footer">
+                <div class="reaction">
+                    <img src="https://img.icons8.com/ios/30/000000/good-quality.png"/>
+                    <img src="https://img.icons8.com/ios/30/000000/poor-quality.png"/>
+                </div>
+                <button onclick='toggleComments(this.id)' id= '{{post.id}}' class="btn btn-primary btnComment">Comments</button>
+
+            </div>
+            <div class="card-body comment-none" id = '{{post.id}}'>
+                {% for comment in post.comments %}
+                    <p>{{comment.content}}</p>
+                {% endfor %}
+                <form action="/post/{{post.id}}/addcomment" method="post">
+                    <div class="form-row">
+                        <input type="text" class="form-control col-sm-9" name="comment" placeholder="Add a comment" required>
+                        <button type="submit" class="btn btn-success col-sm-2 ml-1">Post</button>
+                    </div>                   
+
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}
