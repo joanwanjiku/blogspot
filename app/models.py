@@ -10,7 +10,9 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
     email = db.Column(db.String(255))
-    hash_password = db.Column(db.String(255))    
+    hash_password = db.Column(db.String(255)) 
+    bio = db.Column(db.String)
+    photo_url = db.Column(db.String)   
     posts = db.relationship('Post', backref= 'users', lazy='dynamic')
 
     @property
@@ -56,13 +58,18 @@ class Post(db.Model):
     
     @classmethod
     def get_all_posts(cls):
-        posts = cls.query.all()
+        posts = cls.query.order_by(cls.posted.desc()).all()
         return posts
     
     @classmethod
     def get_post_by_id(cls, id):
         post = cls.query.filter_by(id=id).first()
         return post
+
+    @classmethod
+    def get_post_by_userid(cls, user_id):
+        posts = cls.query.filter_by(user_id = user_id).all()
+        return posts
 
 class Comment(db.Model):
     __tablename__ = 'comments'
