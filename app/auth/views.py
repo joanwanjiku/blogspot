@@ -14,7 +14,8 @@ def register():
         user = User(
             name=form.username.data,
             email=form.email.data,
-            password=form.password.data
+            password=form.password.data,
+            bio = form.bio.data
         )
         user.add_user()
         return redirect(url_for('auth.login'))
@@ -25,7 +26,7 @@ def register():
 def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
-        user = User.query.filter_by(name = login_form.username.data).first()
+        user = User.query.filter_by(email = login_form.email.data).first()
         if user is not None and user.verify_password(login_form.password.data):
 
             login_user(user,login_form.remember.data)
