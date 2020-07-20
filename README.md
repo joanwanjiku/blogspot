@@ -10,7 +10,7 @@ Blog post is a platform where users can view, and comment on  multiple blog post
 - VS Code.
 ### Setup Installation
 To run the application:-
-1. Clone the repository to a folder in your machine using `https://github.com/joanwanjiku/pitch-desk.git`
+1. Clone the repository to a folder in your machine using `https://github.com/joanwanjiku/blogspot.git`
 2. Cd to that folder.
 3. Create a virtual environment using `python3 -m venv virtual`
 4. Activate the virtual environment using `source virtual/bin/activate`
